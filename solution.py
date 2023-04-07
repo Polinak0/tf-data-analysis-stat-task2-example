@@ -18,8 +18,9 @@ def solution(p: float, x: np.array) -> tuple:
     #lower_bound=mean-t_value*std_error
     #upper_bound=mean-t_value*std_error
     #return (lower_bound,upper_bound)
-    return x.mean() - np.sqrt(np.var(x)) * norm.ppf(1 - alpha / 2) / np.sqrt(len(x)), \
-           x.mean() - np.sqrt(np.var(x)) * norm.ppf(alpha / 2) / np.sqrt(len(x))
+    loc = np.mean(x)/29**2
+    return loc - np.sqrt(np.var(x)/29**2) * norm.ppf(1 - alpha / 2) / np.sqrt(len(x)/29**2), \
+           loc - np.sqrt(np.var(x)/29**2) * norm.ppf(alpha / 2) / np.sqrt(len(x)/29**2)
     #loc = x.mean()
     #scale = np.sqrt(np.var(x)) / np.sqrt(len(x))
     #return loc - scale * norm.ppf(1 - alpha / 2), \
